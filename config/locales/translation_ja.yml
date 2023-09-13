@@ -9,3 +9,13 @@ ja:
         memo: メモ #g
         picture: 写真 #g
         title: タイトル #g
+        editing_book: 本の情報を編集
+        new_book: 本を新規登録する
+        created: 本の登録に成功しました
+        updated: 本の更新に成功しました
+        destroyed: 本を削除しました
+        show_this_book: 本の詳細を見る
+        new_book: 新しい本を登録する
+        edit_this_book: 本を編集する
+        back_to_books: 本の一覧に戻る
+        destroy_this_book: この本を削除する
