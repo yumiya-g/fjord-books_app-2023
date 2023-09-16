@@ -25,7 +25,9 @@ class BooksController < ApplicationController
 
     respond_to do |format|
       if @book.save
-        format.html { redirect_to book_url(@book), notice: 'Book was successfully created.' }
+        # ロケールが格納された変数localeを作成
+        locale = default_url_options[:locale].to_s
+        format.html { redirect_to localed_book_url(locale, @book), notice: t('activerecord.attributes.book.created') }
         format.json { render :show, status: :created, location: @book }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -38,7 +40,9 @@ class BooksController < ApplicationController
   def update
     respond_to do |format|
       if @book.update(book_params)
-        format.html { redirect_to book_url(@book), notice: 'Book was successfully updated.' }
+        # ロケールが格納された変数localeを作成
+        locale = default_url_options[:locale].to_s
+        format.html { redirect_to localed_book_url(locale, @book), notice: t('activerecord.attributes.book.updated') }
         format.json { render :show, status: :ok, location: @book }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -52,7 +56,7 @@ class BooksController < ApplicationController
     @book.destroy
 
     respond_to do |format|
-      format.html { redirect_to books_url, notice: 'Book was successfully destroyed.' }
+      format.html { redirect_to books_url, notice: t('activerecord.attributes.book.destroyed') }
       format.json { head :no_content }
     end
   end
