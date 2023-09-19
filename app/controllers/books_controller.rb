@@ -25,7 +25,6 @@ class BooksController < ApplicationController
 
     respond_to do |format|
       if @book.save
-        # ロケールが格納された変数localeを作成
         locale = default_url_options[:locale].to_s
         format.html { redirect_to localed_book_url(locale, @book), notice: t('activerecord.attributes.book.created') }
         format.json { render :show, status: :created, location: @book }
@@ -40,7 +39,6 @@ class BooksController < ApplicationController
   def update
     respond_to do |format|
       if @book.update(book_params)
-        # ロケールが格納された変数localeを作成
         locale = default_url_options[:locale].to_s
         format.html { redirect_to localed_book_url(locale, @book), notice: t('activerecord.attributes.book.updated') }
         format.json { render :show, status: :ok, location: @book }

@@ -7,10 +7,8 @@ Rails.application.routes.draw do
   # Defines the root path route ("/")
   # root "articles#index"
 
-  # rootにアクセスした際、URLにロケールを含めてリダイレクト（Localeの初期値は「ja」）
   root to: redirect("/#{I18n.default_locale}/books"), as: :redirected_root
 
-  # URLのプレフィックスにロケールを含め、パスの別名「localed_book」を定義
   scope '/:locale' do
     resources :books, as: :localed_book
   end
