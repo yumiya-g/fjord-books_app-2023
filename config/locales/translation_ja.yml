@@ -9,6 +9,8 @@ ja:
         memo: メモ #g
         picture: 写真 #g
         title: タイトル #g
+        error: エラー
+        save_error: 本の登録を停止しました
         editing_book: 本の情報を編集
         new_book: 本を新規登録する
         created: 本の登録に成功しました

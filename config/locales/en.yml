@@ -40,6 +40,8 @@ en:
         memo: Memo
         picture: Picture
         title: Title
+        error: Error
+        save_error: prohibited this book from being saved
         editing_book: Editing book
         new_book: New book
         created: Book was successfully created.
