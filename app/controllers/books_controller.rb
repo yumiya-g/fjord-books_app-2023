@@ -56,7 +56,7 @@ class BooksController < ApplicationController
     @book.destroy
 
     respond_to do |format|
-      format.html { redirect_to books_url, notice: t('activerecord.attributes.book.destroyed') }
+      format.html { redirect_to localed_book_index_url, notice: t('activerecord.attributes.book.destroyed') }
       format.json { head :no_content }
     end
   end
