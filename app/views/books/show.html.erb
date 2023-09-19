@@ -1,10 +1,12 @@
+<%= render 'translate_button' %>
 <p style="color: green"><%= notice %></p>
-
-<%= render @book %>
-
-<div>
-  <%= link_to "Edit this book", edit_book_path(@book) %> |
-  <%= link_to "Back to books", books_path %>
-
-  <%= button_to "Destroy this book", @book, method: :delete %>
+<div class="show-item">
+  <%= render @book %>
 </div>
+
+<nav class="page-nav">
+  <%= link_to t("activerecord.attributes.book.edit_this_book"), edit_localed_book_path(I18n.locale, @book.id) %> |
+  <%= link_to t("activerecord.attributes.book.back_to_books"), localed_book_index_path(I18n.locale) %>
+
+  <%= button_to t("activerecord.attributes.book.destroy_this_book"), @book, method: :delete %>
+</nav>
