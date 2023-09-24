@@ -3,9 +3,12 @@
 Rails.application.routes.draw do
   root to: 'books#index'
   get '/books', to: redirect('/')
-
-  devise_for :users
   resources :books
+
+  devise_for :users, controllers: {
+    sessions: 'users/sessions'
+  }
+  resources :users, only: %i[index show]
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Defines the root path route ("/")
