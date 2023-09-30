@@ -1,12 +1,12 @@
 <%= render 'translate_button' %>
 
-<h1><%= t("activerecord.attributes.book.editing_book") %></h1>
+<h1><%= t("views.editing_book") %></h1>
 
 <%= render "form", book: @book %>
 
 <br>
 
 <nav class="page-nav">
-  <%= link_to t("activerecord.attributes.book.show_this_book"), localed_book_path(I18n.locale, @book.id) %> |
-  <%= link_to t("activerecord.attributes.book.back_to_books"), localed_book_index_path %>
+  <%= link_to t("views.show_this_book"), localed_book_path(I18n.locale, @book.id) %> |
+  <%= link_to t("views.back_to_books"), localed_book_index_path %>
 </nav>

@@ -1,19 +1,19 @@
 <p style="color: green"><%= notice %></p>
 <%= render 'translate_button' %>
 
-<h1><%= t("activerecord.models.book") %></h1>
+<h1><%= t(Book.model_name.human) %></h1>
 
 <div id="books" class="index-items">
   <% @books.each do |book| %>
     <div class="index-item">
       <%= render book %>
       <p>
-        <%= link_to t("activerecord.attributes.book.show_this_book"), localed_book_path(book.id) %>
+        <%= link_to t("views.show_this_book"), localed_book_path(book.id) %>
       </p>
     </div>
   <% end %>
 </div>
 
 <nav class="page-nav">
-  <%= link_to t("activerecord.attributes.book.new_book"), new_localed_book_path %>
+  <%= link_to t("views.new_book"), new_localed_book_path %>
 </nav>

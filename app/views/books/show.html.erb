@@ -5,8 +5,8 @@
 </div>
 
 <nav class="page-nav">
-  <%= link_to t("activerecord.attributes.book.edit_this_book"), edit_localed_book_path(I18n.locale, @book.id) %> |
-  <%= link_to t("activerecord.attributes.book.back_to_books"), localed_book_index_path(I18n.locale) %>
+  <%= link_to t("views.edit_this_book"), edit_localed_book_path(I18n.locale, @book.id) %> |
+  <%= link_to t("views.back_to_books"), localed_book_index_path(I18n.locale) %>
 
-  <%= button_to t("activerecord.attributes.book.destroy_this_book"), @book, method: :delete %>
+  <%= button_to t("views.destroy_this_book"), @book, method: :delete %>
 </nav>

@@ -26,7 +26,7 @@ class BooksController < ApplicationController
     respond_to do |format|
       if @book.save
         locale = default_url_options[:locale].to_s
-        format.html { redirect_to localed_book_url(locale, @book), notice: t('activerecord.attributes.book.created') }
+        format.html { redirect_to localed_book_url(locale, @book), notice: t('views.created') }
         format.json { render :show, status: :created, location: @book }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -40,7 +40,7 @@ class BooksController < ApplicationController
     respond_to do |format|
       if @book.update(book_params)
         locale = default_url_options[:locale].to_s
-        format.html { redirect_to localed_book_url(locale, @book), notice: t('activerecord.attributes.book.updated') }
+        format.html { redirect_to localed_book_url(locale, @book), notice: t('views.updated') }
         format.json { render :show, status: :ok, location: @book }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -54,7 +54,7 @@ class BooksController < ApplicationController
     @book.destroy
 
     respond_to do |format|
-      format.html { redirect_to localed_book_index_url, notice: t('activerecord.attributes.book.destroyed') }
+      format.html { redirect_to localed_book_index_url, notice: t('views.destroyed') }
       format.json { head :no_content }
     end
   end

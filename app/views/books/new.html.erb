@@ -1,11 +1,11 @@
 <%= render 'translate_button' %>
 
-<h1><%= t("activerecord.attributes.book.new_book") %></h1>
+<h1><%= t("views.new_book") %></h1>
 
 <%= render "form", book: @book %>
 
 <br>
 
 <nav class="page-nav">
-  <%= link_to t("activerecord.attributes.book.back_to_books"), localed_book_index_path %>
+  <%= link_to t("views.back_to_books"), localed_book_index_path %>
 </nav>
