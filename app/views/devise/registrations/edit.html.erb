@@ -1,3 +1,5 @@
+<%= render '/layouts/header' %>
+
 <h2>Edit <%= resource_name.to_s.humanize %></h2>
 
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
@@ -29,6 +31,36 @@
   <div class="field">
     <%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i><br />
     <%= f.password_field :current_password, autocomplete: "current-password" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :postal_code %><br />
+    <%= f.text_field :postal_code, autocomplete: "postal_code" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :prefecture %><br />
+    <%= f.text_field :prefecture, autocomplete: "prefecture" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :city %><br />
+    <%= f.text_field :city, autocomplete: "city" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :house_number %><br />
+    <%= f.text_field :house_number, autocomplete: "house_number" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :building %><br />
+    <%= f.text_field :building, autocomplete: "building" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :self_introduction %><br />
+    <%= f.text_area :self_introduction, autocomplete: "self_introduction" %>
   </div>
 
   <div class="actions">
