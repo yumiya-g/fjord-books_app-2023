@@ -249,6 +249,7 @@ Show
   border-radius: var(--global-br);
   font-size: var(--global-fz-md);
   line-height: var(--global-lh);
+  margin-block-start: 30px;
 }
 
 .show-item p {
