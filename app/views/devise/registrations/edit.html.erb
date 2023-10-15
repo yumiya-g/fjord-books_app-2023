@@ -14,11 +14,11 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :password %> <i>(<%= t('views.user.about_password')%>)</i><br />
+    <%= f.label :password %> <i>(<%= t('views.user.about_password') %>)</i><br />
     <%= f.password_field :password, autocomplete: "new-password" %>
     <% if @minimum_password_length %>
       <br />
-      <em><%= @minimum_password_length %> <%= t('views.user.char_min')%></em>
+      <em><%= @minimum_password_length %> <%= t('views.user.char_min') %></em>
     <% end %>
   </div>
 
@@ -28,7 +28,7 @@
   </div>
 
   <div class="field">
-    <%= f.label :current_password %> <i>(<%= t('views.user.current_password')%>)</i><br />
+    <%= f.label :current_password %> <i>(<%= t('views.user.current_password') %>)</i><br />
     <%= f.password_field :current_password, autocomplete: "current-password" %>
   </div>
 
@@ -67,8 +67,8 @@
   </div>
 <% end %>
 
-<h3><%= t('views.user.delete_account')%></h3>
+<h3><%= t('views.user.delete_account') %></h3>
 
-<div><%= t('views.user.unhappy')%> <%= button_to t('views.user.delete_account'), registration_path(resource_name), data: { confirm: t('views.common.confirm'), turbo_confirm: t('views.common.confirm') }, method: :delete %></div>
+<div><%= t('views.user.unhappy') %> <%= button_to t('views.user.delete_account'), registration_path(resource_name), data: { confirm: t('views.common.confirm'), turbo_confirm: t('views.common.confirm') }, method: :delete %></div>
 
 <%= link_to t('views.common.back'), :back %>

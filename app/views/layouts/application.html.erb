@@ -11,7 +11,7 @@
   </head>
 
   <body class="<%= params[:action] %>">
-    <% unless user_signed_in?%>
+    <% unless user_signed_in? %>
       <p class="alert"><%= alert %></p>
     <% end %>
     <%= yield %>
