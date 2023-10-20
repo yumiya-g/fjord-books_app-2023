@@ -2,6 +2,7 @@ en:
   activerecord:
     models:
       book: Book
+      user: User
 
     attributes:
       book:
@@ -9,3 +10,39 @@ en:
         memo: Memo
         picture: Picture
         title: Title
+
+      user:
+        email: E-mail
+        postal_code: PostCode
+        prefecture: Prefecture
+        city: City
+        house_number: House Number
+        building: Building
+        self_introduction: Self Introduction
+
+  views:
+    common:
+      logout: LogOut
+      confirm: Are you sure?
+      back: Back
+    authentication:
+      login: Log in
+      sign_up: Sing up
+      forget_password: Forget your password?
+      reset_password: Send me reset password instructions
+      change_password: Change your password
+      change_my_password: Change my password
+      confirm_new_password: Confirm new password
+      did_not_receive_confirmation: Didn't receive confirmation instructions?
+      did_not_receive_unlock: Didn't receive unlock instructions?
+      sign_in_with: Sign in with
+    user:
+      show_details: Show this User
+      edit_user_info: Edit user information
+      edit_user: Edit user
+      about_password: leave blank if you don't want to change it
+      char_min: characters minimum
+      current_password: we need your current password to confirm your changes
+      to_be_update: Update
+      delete_account: Cancel my account
+      unhappy: Unhappy？
