@@ -19,6 +19,7 @@
 </div>
 
 <div class="field">
+  <p><%= image_tag @user.avatar.variant(:thumb) if @user.avatar.attached? %></p>
   <%= f.label :avatar %><br />
- <%= f.file_field :avatar %>
+  <%= f.file_field :avatar, accept: 'image/png, image/gif, image/jpeg' %>
 </div>
