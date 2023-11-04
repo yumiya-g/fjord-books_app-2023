@@ -11,7 +11,9 @@
   </head>
 
   <body class="<%= params[:action] %>">
-    <% unless user_signed_in? %>
+    <% if user_signed_in? %>
+      <%= render 'layouts/header' %>
+    <% else %>
       <p class="alert"><%= alert %></p>
     <% end %>
     <%= yield %>
