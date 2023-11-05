@@ -47,3 +47,11 @@ ja:
       to_be_update: 更新する
       delete_account: アカウントを削除する
       unhappy: 何か不満がありましたか？
+  mailer:
+    reset_password:
+      hello: こんにちは
+      change_to_password: パスワードを変更するためのリンクがリクエストされました。
+      click_below_link: 下記のリンクをクリックしてパスワードを変更してください。
+      change_my_password: パスワードを変更する
+      ignore_this_email: パスワードの再発行をリクエストをしていなければ、このメールは無視してください
+      note_for_new_password: 上記のリンクをクリックして、新しいパスワードを設定するまでパスワードは変更されません。

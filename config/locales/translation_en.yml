@@ -46,3 +46,11 @@ en:
       to_be_update: Update
       delete_account: Cancel my account
       unhappy: Unhappy？
+  mailer:
+    reset_password:
+      hello: Hello
+      change_to_password: Someone has requested a link to change your password.
+      click_below_link: You can do this through the link below.
+      change_my_password: Change my password
+      ignore_this_email: If you didn't request this, please ignore this email.
+      note_for_new_password: Your password won't change until you access the link above and create a new one.
