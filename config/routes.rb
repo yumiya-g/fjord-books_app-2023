@@ -5,9 +5,7 @@ Rails.application.routes.draw do
   get '/books', to: redirect('/')
   resources :books
 
-  devise_for :users, controllers: {
-    sessions: 'users/sessions'
-  }
+  devise_for :users
   resources :users, only: %i[index show]
 
   mount LetterOpenerWeb::Engine, at: "/letter_opener" if Rails.env.development?
