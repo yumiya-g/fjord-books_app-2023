@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>BooksApp</title>
+    <title><%= t('views.app_title') %></title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
@@ -11,11 +11,14 @@
   </head>
 
   <body class="<%= params[:action] %>">
-    <% if user_signed_in? %>
-      <%= render 'layouts/header' %>
-    <% else %>
-      <p class="alert"><%= alert %></p>
-    <% end %>
+      <%= render 'layouts/header' if user_signed_in? %>
+      <% if notice %>
+        <p style="color: green"><%= notice %></p>
+      <% end %>
+      
+      <% if alert %>
+        <p class="alert" style="color: red"><%= alert %></p>
+      <% end %>
     <%= yield %>
   </body>
 </html>
