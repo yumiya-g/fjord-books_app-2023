@@ -1,4 +1,4 @@
-<h2><%= t('views.user.edit_user') %></h2>
+<h2><%= t('.title', resource: User.model_name.human) %></h2>
 
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
   <%= render "devise/shared/error_messages", resource: resource %>
@@ -9,15 +9,15 @@
   </div>
 
   <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
-    <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
+    <div><%= t('.currently_waiting_confirmation_for_email', email: resource.unconfirmed_email) %></div>
   <% end %>
 
   <div class="field">
-    <%= f.label :password %> <i>(<%= t('views.user.about_password') %>)</i><br />
+    <%= f.label :password %> <i>(<%= t('.leave_blank_if_you_don_t_want_to_change_it') %>)</i><br />
     <%= f.password_field :password, autocomplete: "new-password" %>
     <% if @minimum_password_length %>
       <br />
-      <em><%= @minimum_password_length %> <%= t('views.user.char_min') %></em>
+      <em><%= t('devise.shared.minimum_password_length', count: @minimum_password_length) %></em>
     <% end %>
   </div>
 
@@ -27,7 +27,7 @@
   </div>
 
   <div class="field">
-    <%= f.label :current_password %> <i>(<%= t('views.user.current_password') %>)</i><br />
+    <%= f.label :current_password %> <i>(<%= t('.we_need_your_current_password_to_confirm_your_changes') %>)</i><br />
     <%= f.password_field :current_password, autocomplete: "current-password" %>
   </div>
 
@@ -62,12 +62,12 @@
   </div>
 
   <div class="actions">
-    <%= f.submit t('views.user.to_be_update') %>
+    <%= f.submit t('.update') %>
   </div>
 <% end %>
 
-<h3><%= t('views.user.delete_account') %></h3>
+<h3><%= t('.cancel_my_account') %></h3>
 
-<div><%= t('views.user.unhappy') %> <%= button_to t('views.user.delete_account'), registration_path(resource_name), data: { confirm: t('views.common.confirm'), turbo_confirm: t('views.common.confirm') }, method: :delete %></div>
+<div><%= t('.unhappy') %> <%= button_to t('.cancel_my_account'), registration_path(resource_name), data: { confirm: t('.are_you_sure'), turbo_confirm: t('.are_you_sure') }, method: :delete %></div>
 
-<%= link_to t('views.common.back'), :back %>
+<%= link_to t('devise.shared.links.back'), :back %>

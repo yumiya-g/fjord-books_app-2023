@@ -21,6 +21,7 @@ en:
         self_introduction: Self Introduction
 
   views:
+    app_title: Books App
     common:
       logout: LogOut
       confirm: Are you sure?
