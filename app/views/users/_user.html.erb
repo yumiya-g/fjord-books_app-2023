@@ -1,0 +1,34 @@
+<div id="<%= dom_id user %>">
+  <p>
+    <strong><%= User.human_attribute_name(:id) %>:</strong>
+    <%= user.id %>
+  </p>
+  <p>
+    <strong><%= User.human_attribute_name(:email) %>:</strong>
+    <%= user.email %>
+  </p>
+  <p>
+    <strong><%= User.human_attribute_name(:postal_code) %>:</strong>
+    <%= user.postal_code %>
+  </p>
+  <p>
+    <strong><%= User.human_attribute_name(:prefecture) %>:</strong>
+    <%= user.prefecture %>
+  </p>
+  <p>
+    <strong><%= User.human_attribute_name(:city) %>:</strong>
+    <%= user.city %>
+  </p>
+  <p>
+    <strong><%= User.human_attribute_name(:house_number) %>:</strong>
+    <%= user.house_number %>
+  </p>
+  <p>
+    <strong><%= User.human_attribute_name(:building) %>:</strong>
+    <%= user.building %>
+  </p>
+  <p>
+    <strong><%= User.human_attribute_name(:self_introduction) %>:</strong>
+    <%= user.self_introduction %>
+  </p>
+</div>

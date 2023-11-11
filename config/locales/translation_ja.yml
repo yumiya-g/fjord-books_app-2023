@@ -2,6 +2,7 @@ ja:
   activerecord:
     models:
       book: 本
+      user: ユーザー
 
     attributes:
       book:
@@ -9,3 +10,27 @@ ja:
         memo: メモ
         picture: 画像
         title: タイトル
+
+      user:
+        email: Eメール
+        postal_code: 郵便番号
+        prefecture: 都道府県
+        city: 市
+        house_number: 番地
+        building: 建物名・部屋番号
+        self_introduction: 自己紹介文
+
+  views:
+    app_title: 図書管理アプリ
+    common:
+      logout: ログアウト
+      confirm: 実行してもよろしいですか
+      back: 戻る
+    authentication:
+      login: ログイン
+      sign_up: サインアップ
+      forget_password: パスワードを再発行
+      new_password: 新しいパスワード
+      did_not_receive_confirmation: 確認メールが届いていませんか
+      did_not_receive_unlock: ロック解除のメールが届いていませんか
+      sign_in_with: ログインする
