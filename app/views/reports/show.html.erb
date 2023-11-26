@@ -1,5 +1,3 @@
-<p style="color: green"><%= notice %></p>
-
 <%= render @report %>
 
 <div>
@@ -12,3 +10,17 @@
     <%= link_to "Back to reports", reports_path %>
   <% end %>
 </div>
+
+<h2>Comments</h2>
+  <%= "コメントはありません" if @report.comments.blank? %>
+  
+  <% @comments.each do |comment| %>
+  <div>
+    <%= comment.user_id.nil? ? "退会済みユーザー" : User.all.find(comment.user_id).name %><br>
+    <%= comment.created_at %><br>
+    <%= comment.content %>
+  </div>
+  <hr>
+  <% end %>
+
+<%= render partial: 'comments/form', locals: { commentable: @report } %>
