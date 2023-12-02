@@ -1,8 +1,11 @@
 <div id="<%= dom_id report %>">
-  <p>
+  <h2>
     <strong>Title:</strong>
     <%= report.title %>
-  </p>
+  </h2>
+
+  <p>Posted by：<%= report.user.name.presence || report.user.email %>（ID：<%= report.user_id %>）<br>
+  <small>Posted on：<%= l report.created_at , format: :ja_short %></small></p>
 
   <p>
     <strong>Body:</strong>
