@@ -13,11 +13,15 @@
 
 <h2>Comments</h2>
   <%= "コメントはありません" if @report.comments.blank? %>
-  
   <% @comments.each do |comment| %>
   <div>
-    <%= comment.user_id.nil? ? "退会済みユーザー" : User.all.find(comment.user_id).name %><br>
-    <%= comment.created_at %><br>
+    <% if comment.user %>
+    <p><%= comment.user.name.presence || comment.user.email %></p>
+    <% else %>
+    <p>Unsubscribed User</p>    
+    <% end %>
+
+    <%= l comment.created_at, format: :ja_short  %><br>
     <%= comment.content %>
   </div>
   <hr>
