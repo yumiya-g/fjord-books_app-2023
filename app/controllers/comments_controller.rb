@@ -8,7 +8,7 @@ class CommentsController < ApplicationController
       content: comment_params[:content],
       user_id: current_user.id,
       commentable_type: @commentable.class.name,
-      commentable_id: params[:report_id]
+      commentable_id: @commentable[:id]
     )
 
     if comment.save
@@ -27,7 +27,11 @@ class CommentsController < ApplicationController
   private
 
   def set_commentable
-    @commentable = Report.find(params[:report_id])
+    @commentable = if params[:report_id]
+                     Report.find(params[:report_id])
+                   else
+                     Book.find(params[:book_id])
+                   end
   end
 
   def comment_params
