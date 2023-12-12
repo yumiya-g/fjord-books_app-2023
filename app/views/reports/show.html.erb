@@ -11,20 +11,5 @@
   <% end %>
 </div>
 
-<h2>Comments</h2>
-  <%= "コメントはありません" if @report.comments.blank? %>
-  <% @comments.each do |comment| %>
-  <div>
-    <% if comment.user %>
-    <p><%= comment.user.name.presence || comment.user.email %></p>
-    <% else %>
-    <p>Unsubscribed User</p>    
-    <% end %>
+<%= render partial: 'comments/lists', locals: { commentable: @report } %>
 
-    <%= l comment.created_at, format: :ja_short  %><br>
-    <%= comment.content %>
-  </div>
-  <hr>
-  <% end %>
-
-<%= render partial: 'comments/form', locals: { commentable: @report } %>

@@ -1,0 +1,23 @@
+<h2>Comments</h2>
+  <%= "No comments" if @comments.blank? %>
+  <% @comments.each do |comment| %>
+  <div>
+    <% if comment.user %>
+    <p><%= comment.user.name.presence || comment.user.email %></p>
+    <% else %>
+    <p>Unsubscribed User</p>    
+    <% end %>
+
+    <%= l comment.created_at, format: :ja_short %><br>
+    <%= comment.content %>
+
+    <%= button_to t('destroy comment'), comment, method: :delete, data: { turbo_confirm: "Are you sure?" } if comment.user.present? && comment.user[:id] == current_user[:id] %>
+  </div>
+  <hr>
+  <% end %>
+
+<% if @book.present? %>
+<%= render partial: 'comments/form', locals: { commentable: @book } %>
+<% elsif @report.present?  %>
+<%= render partial: 'comments/form', locals: { commentable: @report } %>
+<% end %>

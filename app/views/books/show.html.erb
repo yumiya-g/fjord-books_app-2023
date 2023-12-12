@@ -11,20 +11,4 @@
   <%= button_to t('views.common.destroy', name: Book.model_name.human.downcase), @book, method: :delete %>
 </nav>
 
-<h2>Comments</h2>
-  <%= "コメントはありません" if @book.comments.blank? %>
-  <% @comments.each do |comment| %>
-  <div>
-    <% if comment.user %>
-    <p><%= comment.user.name.presence || comment.user.email %></p>
-    <% else %>
-    <p>Unsubscribed User</p>    
-    <% end %>
-
-    <%= l comment.created_at, format: :ja_short  %><br>
-    <%= comment.content %>
-  </div>
-  <hr>
-  <% end %>
-
-<%= render partial: 'comments/form', locals: { commentable: @book } %>
+<%= render partial: 'comments/lists', locals: { commentable: @book } %>
