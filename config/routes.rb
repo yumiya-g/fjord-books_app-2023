@@ -12,4 +12,6 @@ Rails.application.routes.draw do
   resources :reports do
     resources :comments, only: [:create, :edit, :destroy]
   end
+
+  resources :comments, only: [:edit, :destroy]
 end
