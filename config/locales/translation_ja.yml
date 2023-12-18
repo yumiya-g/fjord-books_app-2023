@@ -3,6 +3,8 @@ ja:
     models:
       book: 本
       user: ユーザ
+      report: 日報
+      comment: コメント
 
     attributes:
       book:
@@ -16,3 +18,17 @@ ja:
         address: 住所
         self_introduction: 自己紹介文
         avatar: ユーザ画像
+        unsubscribed_user: 退会済みユーザー
+      comment:
+        posted_by: 投稿者
+        posted_on: 投稿日
+        body: 本文
+        edit_comment: コメントを編集
+        destroy_comment: コメントを削除
+        are_you_sure: コメントを削除しますか？
+      report:
+        title: タイトル
+        body: 本文
+  time:
+    formats:
+      default: "%Y年%m月%d日(%a) %H時%M分"
