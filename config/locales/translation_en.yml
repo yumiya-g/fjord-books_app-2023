@@ -26,6 +26,7 @@ en:
         edit_comment: "Edit Comment"
         destroy_comment: "Destory Comment"
         are_you_sure: "Are You Sure?"
+        no_comments: "No Comments"
       report:
         title: Title
         body: Body

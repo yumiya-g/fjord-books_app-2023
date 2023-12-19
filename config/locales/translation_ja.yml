@@ -26,6 +26,7 @@ ja:
         edit_comment: コメントを編集
         destroy_comment: コメントを削除
         are_you_sure: コメントを削除しますか？
+        no_comments: コメントはありません
       report:
         title: タイトル
         body: 本文
