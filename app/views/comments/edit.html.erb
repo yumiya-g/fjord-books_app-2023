@@ -1,0 +1,12 @@
+<h1><%= t('views.common.title_edit', name: Comment.model_name.human.downcase) %></h1>
+
+<%= form_with(model: @comment) do |form| %>
+  <%= form.text_area :content, required: true %>
+  <%= form.submit %>
+<% end %>
+
+<br>
+
+<div>
+  <%= link_to t('views.common.show', name: Comment.model_name.human), @commentable %>
+</div>
