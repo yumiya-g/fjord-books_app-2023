@@ -2,7 +2,12 @@
 
 <div id="reports" class="index-items">
   <% @reports.each do |report| %>
+  <div class="index-item">
     <%= render report %>
+    <p>
+      <%= link_to t('views.common.show', name: Report.model_name.human), report %>
+    </p>
+  </div>
   <% end %>
 </div>
 
