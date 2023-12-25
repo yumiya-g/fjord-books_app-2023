@@ -2,11 +2,13 @@
   <%= t("#{Comment.human_attribute_name('no_comments')}") if @comments.blank? %>
   <% @comments.each do |comment| %>
   <div>
+    <p>
     <% if comment.user %>
-    <p><%= comment.user.name.presence || comment.user.email %><br><%= l comment.created_at %></p>
+    <%= comment.user.name.presence || comment.user.email %>
     <% else %>
-    <p><%= User.human_attribute_name('unsubscribed_user') %> <br><%= l comment.created_at %></p>
+    <%= User.human_attribute_name('unsubscribed_user') %>
     <% end %>
+    <br><%= l comment.created_at %></p>
 
     <p><%= comment.content %></p>
     <% if comment.user.present? && comment.user[:id] == current_user[:id] %>
