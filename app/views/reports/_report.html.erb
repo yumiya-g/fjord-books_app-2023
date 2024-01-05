@@ -3,8 +3,7 @@
       <strong><%= t('common.title') %>:</strong>
       <%= report.title %>
     </h2>
-
-    <p><%= Comment.human_attribute_name('posted_by') %>:<%= report.user.name.presence || report.user.email %><br>
+    <p><%= Comment.human_attribute_name('posted_by') %>:<%= account_name(report.user.id) %><br>
     <small><%= Comment.human_attribute_name('posted_on') %>:<%= l report.created_at %></small></p>
 
     <p>
