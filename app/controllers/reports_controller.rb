@@ -1,7 +1,8 @@
 # frozen_string_literal: true
 
 class ReportsController < ApplicationController
-  before_action :set_report, only: %i[show edit update destroy]
+  before_action :set_report, only: %i[show]
+  before_action :set_current_users_report, only: %i[edit update destroy]
 
   # GET /reports or /reports.json
   def index
@@ -20,9 +21,7 @@ class ReportsController < ApplicationController
   end
 
   # GET /reports/1/edit
-  def edit
-    redirect_to action: :show if current_user.id != @report.user_id
-  end
+  def edit; end
 
   # POST /reports or /reports.json
   def create
@@ -54,7 +53,6 @@ class ReportsController < ApplicationController
 
   # DELETE /reports/1 or /reports/1.json
   def destroy
-    redirect_to action: :show if current_user.id != @report.user_id
     @report.destroy
 
     respond_to do |format|
@@ -67,6 +65,13 @@ class ReportsController < ApplicationController
   # Use callbacks to share common setup or constraints between actions.
   def set_report
     @report = Report.find(params[:id])
+  end
+
+  def set_current_users_report
+    @report = current_user.reports.find(params[:id])
+  rescue StandardError
+    redirect_to action: :index
+    flash[:alert] = '他のユーザーが作成した日報は編集できません'
   end
 
   # Only allow a list of trusted parameters through.
