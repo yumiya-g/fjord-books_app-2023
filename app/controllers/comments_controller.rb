@@ -7,9 +7,8 @@ class CommentsController < ApplicationController
   def create
     comment = Comment.new(
       content: comment_params[:content],
-      user_id: current_user.id,
-      commentable_type: @commentable.class.name,
-      commentable_id: @commentable[:id]
+      user: current_user,
+      commentable: @commentable
     )
 
     if comment.save
@@ -51,6 +50,10 @@ class CommentsController < ApplicationController
   def set_comment
     @comment = Comment.find(params[:id])
     @commentable = Comment.find(params[:id]).commentable
+    return if current_user.id == @comment.user.id
+
+    flash[:alert] = '他のユーザーのコメントは編集できません'
+    redirect_to @commentable
   end
 
   def comment_params
