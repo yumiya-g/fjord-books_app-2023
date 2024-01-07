@@ -4,12 +4,13 @@
   <% @comments.each do |comment| %>
     <div>
       <p>
-      <% if comment.user %>
-        <%= comment.user.name.presence || comment.user.email %>
-      <% else %>
-        <%= User.human_attribute_name('unsubscribed_user') %>
-      <% end %>
-      <br><%= l comment.created_at %></p>
+        <% if comment.user %>
+          <%= comment.user.name.presence || comment.user.email %>
+        <% else %>
+          <%= User.human_attribute_name('unsubscribed_user') %>
+        <% end %>
+        <br><%= l comment.created_at %>
+      </p>
 
       <p><%= comment.content %></p>
       <% if comment.user.present? && comment.user.id == current_user.id %>
