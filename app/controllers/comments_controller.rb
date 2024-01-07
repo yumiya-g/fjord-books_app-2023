@@ -48,11 +48,9 @@ class CommentsController < ApplicationController
   end
 
   def set_comment
-    @comment = Comment.find(params[:id])
     @commentable = Comment.find(params[:id]).commentable
-    return if current_user.id == @comment.user.id
-
-    flash[:alert] = '他のユーザーのコメントは編集できません'
+    @comment = current_user.comments.find(params[:id])
+  rescue StandardError
     redirect_to @commentable
   end
 
