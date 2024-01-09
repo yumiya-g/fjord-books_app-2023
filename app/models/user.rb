@@ -11,7 +11,7 @@ class User < ApplicationRecord
   has_many :reports, dependent: :destroy
   has_many :comments, dependent: :nullify
 
-  def account_name(user)
-    [user.name, user.email].find(&:present?)
+  def account_name
+    [name, email].find(&:present?)
   end
 end

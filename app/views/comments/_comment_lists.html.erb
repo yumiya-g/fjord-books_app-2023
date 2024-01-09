@@ -5,7 +5,7 @@
     <div>
       <p>
         <% if comment.user %>
-          <%= comment.user.name.presence || comment.user.email %>
+          <%= comment.user.account_name %>
         <% else %>
           <%= User.human_attribute_name('unsubscribed_user') %>
         <% end %>
