@@ -62,8 +62,6 @@ class ReportsController < ApplicationController
 
   def set_current_users_report
     @report = current_user.reports.find(params[:id])
-  rescue StandardError
-    redirect_to action: :index
   end
 
   # Only allow a list of trusted parameters through.
