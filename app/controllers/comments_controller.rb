@@ -50,8 +50,6 @@ class CommentsController < ApplicationController
   def set_comment
     @commentable = Comment.find(params[:id]).commentable
     @comment = current_user.comments.find(params[:id])
-  rescue StandardError
-    redirect_to @commentable
   end
 
   def comment_params
