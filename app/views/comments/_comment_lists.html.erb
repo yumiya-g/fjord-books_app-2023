@@ -1,0 +1,28 @@
+<h2><%= t('views.common.title_index', name: Comment.model_name.human) %></h2>
+  <%= t("#{Comment.human_attribute_name('no_comments')}") if @comments.blank? %>
+
+  <% @comments.each do |comment| %>
+    <div>
+      <p>
+        <% if comment.user %>
+          <%= comment.user.account_name %>
+        <% else %>
+          <%= User.human_attribute_name('unsubscribed_user') %>
+        <% end %>
+        <br><%= l comment.created_at %>
+      </p>
+
+      <p><%= comment.content %></p>
+      <% if comment.user.present? && comment.user.id == current_user.id %>
+        <%= button_to t("#{Comment.human_attribute_name('destroy_comment')}"), comment, method: :delete, data: { turbo_confirm: "#{Comment.human_attribute_name('are_you_sure')}" } %>
+        <%= link_to t("#{Comment.human_attribute_name('edit_comment')}"), edit_comment_path(comment.id) %>
+      <% end %>
+    </div>
+    <hr>
+  <% end %>
+
+<% if @book.present? %>
+  <%= render partial: 'comments/form', locals: { commentable: @book } %>
+<% elsif @report.present? %>
+  <%= render partial: 'comments/form', locals: { commentable: @report } %>
+<% end %>

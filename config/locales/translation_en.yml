@@ -2,6 +2,9 @@ en:
   activerecord:
     models:
       book: Book
+      user: User
+      report: Report
+      comment: Comment
 
     attributes:
       book:
@@ -9,3 +12,21 @@ en:
         memo: Memo
         picture: Picture
         title: Title
+      user:
+        name: Name
+        postal_code: "Postal Code"
+        address: Adress
+        self_introduction: "Self Introduction"
+        avatar: Avatar
+        unsubscribed_user: "Unsubscribed User"
+      comment:
+        posted_by: "Posted By"
+        posted_on: "Posted On"
+        body: Body
+        edit_comment: "Edit Comment"
+        destroy_comment: "Destory Comment"
+        are_you_sure: "Are You Sure?"
+        no_comments: "No Comments"
+      report:
+        title: Title
+        body: Body

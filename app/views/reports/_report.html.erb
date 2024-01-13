@@ -1,0 +1,15 @@
+  <div id="<%= dom_id report %>">
+    <h2>
+      <strong><%= t('common.title') %>:</strong>
+      <%= report.title %>
+    </h2>
+    <p>
+      <%= Comment.human_attribute_name('posted_by') %>:<%= report.user.account_name %><br>
+      <small><%= Comment.human_attribute_name('posted_on') %>:<%= l report.created_at %></small>
+    </p>
+
+    <p>
+      <strong><%= Comment.human_attribute_name('body') %>:</strong>
+      <%= report.body %>
+    </p>
+  </div>

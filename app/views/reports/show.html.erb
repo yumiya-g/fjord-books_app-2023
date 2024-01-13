@@ -1,0 +1,14 @@
+<%= render @report %>
+
+<div>
+  <% if current_user.id == @report.user_id %>
+    <%= link_to t('views.common.title_edit', name: Report.model_name.human.downcase), edit_report_path(@report) %>
+    <%= link_to t('views.common.back', name: Report.model_name.human.downcase), reports_path %>
+
+    <%= button_to t('views.common.destroy', name: Report.model_name.human.downcase), @report, method: :delete %>
+  <% else %>
+    <%= link_to t('views.common.back', name: Report.model_name.human.downcase), reports_path %>
+  <% end %>
+</div>
+
+<%= render partial: 'comments/comment_lists', locals: { commentable: @report } %>
