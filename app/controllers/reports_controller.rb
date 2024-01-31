@@ -27,7 +27,6 @@ class ReportsController < ApplicationController
         @report.save!
         save_relationship(input_report_ids)
       end
-
       redirect_to @report, notice: t('controllers.common.notice_create', name: Report.model_name.human)
     else
       render :new, status: :unprocessable_entity
@@ -44,7 +43,6 @@ class ReportsController < ApplicationController
         save_relationship(input_report_ids)
       end
       redirect_to @report, notice: t('controllers.common.notice_update', name: Report.model_name.human)
-
     else
       render :edit, status: :unprocessable_entity
     end
@@ -52,7 +50,6 @@ class ReportsController < ApplicationController
 
   def destroy
     @report.destroy
-
     redirect_to reports_url, notice: t('controllers.common.notice_destroy', name: Report.model_name.human)
   end
 
