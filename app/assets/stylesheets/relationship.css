@@ -1,0 +1,31 @@
+/****************
+relationship-container
+****************/
+
+.relationship-container {
+  margin-top: 32px;
+  max-width: var(--single-column-w);
+  border: solid var(--global-bw) var(--global-bc);
+  padding: 10px;
+}
+
+.relationship-container ul {
+  margin: 12px 0 0;
+  padding-inline-start: 0;
+  list-style: none;
+}
+
+.relationship-container li {
+  font-size: var(--global-fz-md);
+  line-height: 1.8;
+  list-style-type: disc;
+  list-style-position: inside;
+}
+
+.relationship-container li:not(:first-of-type) {
+  padding-top: 12px;
+}
+
+.relationship-container li:last-of-type {
+  padding-bottom: 0;
+}

@@ -1,0 +1,15 @@
+<div class="relationship-container">
+  <strong><%= Relationship.human_attribute_name(:link_description) %>:</strong>
+  <% if @relationships.present? %>
+    <ul>
+      <% @relationships.each do |relationship| %>
+        <li>
+          <%= link_to "#{Report.find_by(id: relationship.mentioning_report_id).title}",
+          report_path(Report.find_by(id: relationship.mentioning_report_id).id) %>
+        </li>
+      <% end %>
+    </ul>
+  <% else %>
+    <br><%= Relationship.human_attribute_name(:no_relationship) %>
+  <% end %>
+</div>

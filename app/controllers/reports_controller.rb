@@ -9,9 +9,9 @@ class ReportsController < ApplicationController
 
   def show
     @report = Report.find(params[:id])
+    @relationships = @report.reports_mentioned
   end
 
-  # GET /reports/new
   def new
     @report = current_user.reports.new
   end
@@ -71,8 +71,8 @@ class ReportsController < ApplicationController
   end
 
   def save_relationship(input_report_ids)
-    input_report_ids.map do |report_id|
-      relationship = Relationship.new(mentioning_report_id: @report.id, mentioned_report_id: report_id)
+    input_report_ids.map do |input_report_id|
+      relationship = Relationship.new(mentioning_report_id: @report.id, mentioned_report_id: input_report_id)
       relationship.save!
     end
   end
