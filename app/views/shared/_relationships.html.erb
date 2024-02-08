@@ -4,8 +4,8 @@
     <ul>
       <% @relationships.each do |relationship| %>
         <li>
-          <%= link_to "#{Report.find_by(id: relationship.mentioning_report_id).title}",
-          report_path(Report.find_by(id: relationship.mentioning_report_id).id) %>
+          <%= link_to "#{relationship.mentioning_report.title}",
+          report_path(relationship.mentioning_report_id) %>
         </li>
       <% end %>
     </ul>
