@@ -1,5 +1,5 @@
 <div class="relationship-container">
-  <strong><%= Relationship.human_attribute_name(:link_description) %>:</strong>
+  <strong><%= I18n.t("relationship.link_description") %>:</strong>
   <% if @relationships.present? %>
     <ul>
       <% @relationships.each do |relationship| %>
@@ -10,6 +10,6 @@
       <% end %>
     </ul>
   <% else %>
-    <br><%= Relationship.human_attribute_name(:no_relationship) %>
+    <br><%= I18n.t("relationship.no_relationship") %>
   <% end %>
 </div>
