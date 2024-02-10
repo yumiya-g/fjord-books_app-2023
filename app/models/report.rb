@@ -38,9 +38,9 @@ class Report < ApplicationRecord
   def self.save_mentions(report, report_content)
     Relationship.where(mentioning_report_id: report.id).destroy_all
 
-    mentioning_ids = extract_ids(report, report_content).compact
-    mentioning_ids.map do |mentioning_id|
-      relationship = Relationship.new(mentioning_report_id: report.id, mentioned_report_id: mentioning_id)
+    mentioned_ids = extract_ids(report, report_content).compact
+    mentioned_ids.map do |mentioned_id|
+      relationship = Relationship.new(mentioning_report_id: report.id, mentioned_report_id: mentioned_id)
       relationship.save!
     end
   end

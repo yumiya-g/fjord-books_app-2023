@@ -1,11 +1,11 @@
 <div class="relationship-container">
   <strong><%= I18n.t("relationship.link_description") %>:</strong>
-  <% if @relationships.present? %>
+  <% if @mentions.present? %>
     <ul>
-      <% @relationships.each do |relationship| %>
+      <% @mentions.each do |mention| %>
         <li>
-          <%= link_to "#{relationship.mentioning_report.title}",
-          report_path(relationship.mentioning_report_id) %>
+          <%= link_to "#{mention.mentioning_report.title}",
+          report_path(mention.mentioning_report_id) %>
         </li>
       <% end %>
     </ul>

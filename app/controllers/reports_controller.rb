@@ -9,7 +9,7 @@ class ReportsController < ApplicationController
 
   def show
     @report = Report.find(params[:id])
-    @relationships = @report.reports_mentioned
+    @mentions = @report.reports_mentioned
   end
 
   def new
