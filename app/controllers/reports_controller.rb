@@ -19,33 +19,21 @@ class ReportsController < ApplicationController
   def edit; end
 
   def create
-    if report_params.present?
-      input_report_ids = extract_ids
-      @report = current_user.reports.new(report_params)
+    @report = current_user.reports.new(report_params)
 
-      ActiveRecord::Base.transaction do
-        @report.save!
-        save_relationship(input_report_ids)
-      end
-      redirect_to @report, notice: t('controllers.common.notice_create', name: Report.model_name.human)
-    else
-      render :new, status: :unprocessable_entity
+    ActiveRecord::Base.transaction do
+      @report.save!
+      Report.save_mentions(@report, report_params[:content])
     end
+    redirect_to @report, notice: t('controllers.common.notice_create', name: Report.model_name.human)
   end
 
   def update
-    if report_params.present?
-      input_report_ids = extract_ids
-      Relationship.where(mentioning_report_id: @report.id).destroy_all
-
-      ActiveRecord::Base.transaction do
-        @report.update!(report_params)
-        save_relationship(input_report_ids)
-      end
-      redirect_to @report, notice: t('controllers.common.notice_update', name: Report.model_name.human)
-    else
-      render :edit, status: :unprocessable_entity
+    ActiveRecord::Base.transaction do
+      @report.update!(report_params)
+      Report.save_mentions(@report, report_params[:content])
     end
+    redirect_to @report, notice: t('controllers.common.notice_update', name: Report.model_name.human)
   end
 
   def destroy
@@ -61,16 +49,5 @@ class ReportsController < ApplicationController
 
   def report_params
     params.require(:report).permit(:title, :content)
-  end
-
-  def extract_ids
-    report_params[:content].scan(%r{https?://localhost:3000/reports/(\d+)}).flatten.uniq
-  end
-
-  def save_relationship(input_report_ids)
-    input_report_ids.map do |input_report_id|
-      relationship = Relationship.new(mentioning_report_id: @report.id, mentioned_report_id: input_report_id)
-      relationship.save!
-    end
   end
 end

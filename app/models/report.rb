@@ -34,4 +34,21 @@ class Report < ApplicationRecord
   def created_on
     created_at.to_date
   end
+
+  def self.save_mentions(report, report_content)
+    Relationship.where(mentioning_report_id: report.id).destroy_all
+
+    mentioning_ids = extract_ids(report, report_content).compact
+    mentioning_ids.map do |mentioning_id|
+      relationship = Relationship.new(mentioning_report_id: report.id, mentioned_report_id: mentioning_id)
+      relationship.save!
+    end
+  end
+
+  def self.extract_ids(report, report_content)
+    ids = report_content.scan(%r{https?://localhost:3000/reports/(\d+)}).flatten.uniq
+    ids.map do |id|
+      id if id != report.id.to_s && Report.find_by(id: id.to_i).present?
+    end
+  end
 end
