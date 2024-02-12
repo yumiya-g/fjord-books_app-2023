@@ -21,19 +21,21 @@ class ReportsController < ApplicationController
   def create
     @report = current_user.reports.new(report_params)
 
-    ActiveRecord::Base.transaction do
-      @report.save!
-      Report.save_mentions(@report, report_params[:content])
+    if @report.save
+      @report.save_transaction
+      redirect_to @report, notice: t('controllers.common.notice_create', name: Report.model_name.human)
+    else
+      render :new, status: :unprocessable_entity
     end
-    redirect_to @report, notice: t('controllers.common.notice_create', name: Report.model_name.human)
   end
 
   def update
-    ActiveRecord::Base.transaction do
-      @report.update!(report_params)
-      Report.save_mentions(@report, report_params[:content])
+    if @report.update(report_params)
+      @report.save_transaction
+      redirect_to @report, notice: t('controllers.common.notice_update', name: Report.model_name.human)
+    else
+      render :new, status: :unprocessable_entity
     end
-    redirect_to @report, notice: t('controllers.common.notice_update', name: Report.model_name.human)
   end
 
   def destroy
