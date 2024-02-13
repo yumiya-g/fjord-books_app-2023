@@ -4,7 +4,7 @@
   <%= render @report %>
 </div>
 
-<%= render 'shared/relationships' %>
+<%= render 'shared/relationships', report: @report %>
 <%= render 'shared/comments', commentable: @report %>
 
 <nav class="page-nav">
