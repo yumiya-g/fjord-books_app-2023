@@ -35,20 +35,36 @@ class Report < ApplicationRecord
     created_at.to_date
   end
 
-  def self.save_mentions(report, report_content)
-    Relationship.where(mentioning_report_id: report.id).destroy_all
+  def save_with_mention
+    return false unless save
 
-    mentioned_ids = extract_ids(report, report_content).compact
-    mentioned_ids.map do |mentioned_id|
-      relationship = Relationship.new(mentioning_report_id: report.id, mentioned_report_id: mentioned_id)
+    ActiveRecord::Base.transaction do
+      save!
+      save_mentions
+    end
+  end
+
+  def update_with_mention(params)
+    return false unless update(params)
+
+    ActiveRecord::Base.transaction do
+      update!(params)
+      save_mentions
+    end
+  end
+
+  def save_mentions
+    Relationship.where(mentioning_report_id: id).destroy_all
+
+    mentioned_reports = extract_ids(content)
+    mentioned_reports.map do |mentioned_report|
+      relationship = Relationship.new(mentioning_report_id: id, mentioned_report_id: mentioned_report.id)
       relationship.save!
     end
   end
 
-  def self.extract_ids(report, report_content)
-    ids = report_content.scan(%r{https?://localhost:3000/reports/(\d+)}).flatten.uniq
-    ids.map do |id|
-      id if id != report.id.to_s && Report.find_by(id: id.to_i).present?
-    end
+  def extract_ids(report_content)
+    ids = report_content.scan(%r{https?://localhost:3000/reports/(\d+)}).flatten.uniq.map(&:to_i)
+    Report.where.not(id:).where(id: ids).order(id: :asc)
   end
 end

@@ -9,7 +9,6 @@ class ReportsController < ApplicationController
 
   def show
     @report = Report.find(params[:id])
-    @mentions = @report.mentioned_mentions
   end
 
   def new
@@ -20,9 +19,7 @@ class ReportsController < ApplicationController
 
   def create
     @report = current_user.reports.new(report_params)
-
-    if @report.save
-      @report.save_transaction
+    if @report.save_with_mention
       redirect_to @report, notice: t('controllers.common.notice_create', name: Report.model_name.human)
     else
       render :new, status: :unprocessable_entity
@@ -30,8 +27,7 @@ class ReportsController < ApplicationController
   end
 
   def update
-    if @report.update(report_params)
-      @report.save_transaction
+    if @report.update_with_mention(report_params)
       redirect_to @report, notice: t('controllers.common.notice_update', name: Report.model_name.human)
     else
       render :new, status: :unprocessable_entity

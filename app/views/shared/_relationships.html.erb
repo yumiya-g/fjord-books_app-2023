@@ -1,6 +1,6 @@
 <div class="relationship-container">
-  <strong><%= I18n.t("relationship.link_description") %>:</strong>
-  <% if report.present? %>
+  <% if report.mentioned_reports.present? %>
+    <strong><%= I18n.t("relationship.link_description") %>:</strong>
     <ul>
       <% report.mentioned_reports.each do |mentioned_report| %>
         <li>
@@ -10,6 +10,6 @@
       <% end %>
     </ul>
   <% else %>
-    <br><%= I18n.t("relationship.no_relationship") %>
+    <strong><%= I18n.t("relationship.no_relationship") %></strong>
   <% end %>
 </div>
