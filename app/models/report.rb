@@ -36,30 +36,29 @@ class Report < ApplicationRecord
   end
 
   def save_with_mention
-    return false unless save
-
     ActiveRecord::Base.transaction do
-      save!
+      return false unless save
+
+      save
       save_mentions
     end
   end
 
   def update_with_mention(params)
-    return false unless update(params)
-
     ActiveRecord::Base.transaction do
-      update!(params)
+      return false unless update(params)
+
+      update(params)
       save_mentions
     end
   end
 
   def save_mentions
-    Relationship.where(mentioning_report_id: id).destroy_all
+    mentioning_mentions.destroy_all
 
-    mentioned_reports = extract_ids(content)
-    mentioned_reports.map do |mentioned_report|
-      relationship = Relationship.new(mentioning_report_id: id, mentioned_report_id: mentioned_report.id)
-      relationship.save!
+    extracted_mentioned_reports = extract_ids(content)
+    extracted_mentioned_reports.map do |mentioned_report|
+      mentioning_mentions.create!(mentioned_report:)
     end
   end
 
