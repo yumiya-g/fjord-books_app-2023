@@ -39,7 +39,6 @@ class Report < ApplicationRecord
     ActiveRecord::Base.transaction do
       return false unless save
 
-      save
       save_mentions
     end
   end
@@ -48,7 +47,6 @@ class Report < ApplicationRecord
     ActiveRecord::Base.transaction do
       return false unless update(params)
 
-      update(params)
       save_mentions
     end
   end
