@@ -1,0 +1,15 @@
+<div class="relationship-container">
+  <% if report.mentioned_reports.present? %>
+    <strong><%= I18n.t("relationship.link_description") %>:</strong>
+    <ul>
+      <% report.mentioned_reports.each do |mentioned_report| %>
+        <li>
+          <%= link_to "#{mentioned_report.title}",
+          report_path(mentioned_report.id) %>
+        </li>
+      <% end %>
+    </ul>
+  <% else %>
+    <strong><%= I18n.t("relationship.no_relationship") %></strong>
+  <% end %>
+</div>
