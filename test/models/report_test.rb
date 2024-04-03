@@ -3,7 +3,7 @@
 require 'test_helper'
 
 class ReportTest < ActiveSupport::TestCase
-  test 'editable?' do
+  test '#editable?' do
     report = create(:report)
     assert report.editable?(report.user)
 
@@ -11,12 +11,12 @@ class ReportTest < ActiveSupport::TestCase
     assert_not report.editable?(other_user)
   end
 
-  test 'created_on' do
+  test '#created_on' do
     report = create(:report)
     assert_equal Time.zone.now.to_date, report.created_on
   end
 
-  test 'save_mention' do
+  test '#save_mention' do
     report1 = create(:report)
     assert_empty report1.active_mentions
 
