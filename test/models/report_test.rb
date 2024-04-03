@@ -17,13 +17,16 @@ class ReportTest < ActiveSupport::TestCase
   end
 
   test '#save_mention' do
-    report1 = create(:report)
-    assert_empty report1.active_mentions
+    report_without_mention = create(:report)
+    assert_empty report_without_mention.active_mentions
 
-    create(:report, content: 'http://localhost:3000/reports/aBＣあ漢字')
-    assert_empty ReportMention.all
+    report_with_mention = create(:report, content: 'http://localhost:3000/reports/aBＣあ漢字')
+    assert_empty report_with_mention.active_mentions
 
-    report2 = create(:report, content: 'http://localhost:3000/reports/1')
-    assert_not_empty report2.active_mentions
+    report_with_mention.update(content: 'http://localhost:3000/reports/1')
+    assert_equal 1, report_with_mention.active_mentions.first.mentioned_by_id
+
+    report_with_mention.update(content: 'http://localhost:3000/reports/hoge')
+    assert_empty report_with_mention.active_mentions
   end
 end
