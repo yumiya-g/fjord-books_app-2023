@@ -12,8 +12,10 @@ class ReportTest < ActiveSupport::TestCase
   end
 
   test '#created_on' do
-    report = create(:report)
-    assert_equal Time.zone.now.to_date, report.created_on
+    travel_to Time.zone.local(2024, 4, 5, 0, 0) do
+      report = create(:report)
+      assert_equal Time.zone.now.to_date, report.created_on
+    end
   end
 
   test '#save_mention' do
