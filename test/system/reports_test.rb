@@ -49,5 +49,8 @@ class ReportsTest < ApplicationSystemTestCase
     click_on 'この日報を削除', match: :first
 
     assert_text '日報が削除されました。'
+    assert_no_text 'Aliceの日報'
+    assert_no_text 'Aliceの日報の本文'
+    assert_no_text @report.created_on
   end
 end
